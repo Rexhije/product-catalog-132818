@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function ProductCard({ product, isFavorite, onToggleFavorite }) {
+function ProductCard({ product, isFavorite, onToggleFavorite, onEdit, onDelete }) {
     return (
         <div className="product-card">
             <h2>{product.title}</h2>
@@ -15,9 +15,23 @@ function ProductCard({ product, isFavorite, onToggleFavorite }) {
                     {isFavorite ? 'Remove Favorite' : 'Add Favorite'}
                 </button>
 
-                <Link to={`/products/${product.id}`} className="details-link">
-                    View Details
-                </Link>
+                {!product.isLocal && (
+                    <Link to={`/products/${product.id}`} className="details-link">
+                        View Details
+                    </Link>
+                )}
+
+                {onEdit && (
+                    <button onClick={() => onEdit(product)} className="secondary-button">
+                        Edit
+                    </button>
+                )}
+
+                {onDelete && (
+                    <button onClick={() => onDelete(product.id)} className="danger-button">
+                        Delete
+                    </button>
+                )}
             </div>
         </div>
     )
