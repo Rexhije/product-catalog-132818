@@ -18,11 +18,15 @@ export function FavoritesProvider({ children }) {
     }, [])
 
     const removeFavorite = useCallback((id) => {
-        setFavorites(prevFavorites => prevFavorites.filter(item => item.id !== id))
+        setFavorites(prevFavorites =>
+            prevFavorites.filter(item => item.id !== id)
+        )
     }, [])
 
     return (
-        <FavoritesContext.Provider value={{ favorites, toggleFavorite, removeFavorite }}>
+        <FavoritesContext.Provider
+            value={{ favorites, toggleFavorite, removeFavorite }}
+        >
             {children}
         </FavoritesContext.Provider>
     )

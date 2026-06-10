@@ -4,6 +4,7 @@ import { FavoritesContext } from '../context/FavoritesContext'
 
 function ProductDetailsPage() {
     const { id } = useParams()
+
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -25,7 +26,7 @@ function ProductDetailsPage() {
 
     if (loading) {
         return (
-            <main className="page center-page">
+            <main className="page">
                 <h2>Loading product details...</h2>
             </main>
         )
@@ -33,7 +34,7 @@ function ProductDetailsPage() {
 
     if (error) {
         return (
-            <main className="page center-page">
+            <main className="page">
                 <h2>Error: {error}</h2>
             </main>
         )
@@ -48,15 +49,26 @@ function ProductDetailsPage() {
             </Link>
 
             <div className="details-card">
+                <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    className="details-image"
+                />
+
                 <h1>{product.title}</h1>
-                <p className="category">Category: {product.category}</p>
+
+                <p><strong>Category:</strong> {product.category}</p>
                 <p><strong>Brand:</strong> {product.brand}</p>
                 <p><strong>Price:</strong> ${product.price}</p>
                 <p><strong>Rating:</strong> {product.rating}</p>
                 <p><strong>Stock:</strong> {product.stock}</p>
+
                 <p className="description">{product.description}</p>
 
-                <button onClick={() => toggleFavorite(product)} className="primary-button">
+                <button
+                    onClick={() => toggleFavorite(product)}
+                    className="primary-button"
+                >
                     {isFavorite ? 'Remove Favorite' : 'Add Favorite'}
                 </button>
             </div>

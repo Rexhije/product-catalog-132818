@@ -8,19 +8,19 @@ import NotFoundPage from './pages/NotFoundPage'
 import { FavoritesProvider } from './context/FavoritesContext'
 
 function App() {
-  return (
-      <FavoritesProvider>
-        <Navbar />
+    return (
+        <FavoritesProvider>
+            <Navbar />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailsPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </FavoritesProvider>
-  )
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:id" element={<ProductDetailsPage />} />
+                <Route path="/favorites" element={<FavoritesPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        </FavoritesProvider>
+    )
 }
 
 export default App

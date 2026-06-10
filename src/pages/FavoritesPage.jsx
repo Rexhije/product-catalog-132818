@@ -7,17 +7,16 @@ function FavoritesPage() {
 
     if (favorites.length === 0) {
         return (
-            <main className="page center-page">
+            <main className="page">
                 <h1>Favorites</h1>
-                <p>You have not added any favorite products yet.</p>
+                <p>No favorite products yet.</p>
             </main>
         )
     }
 
     return (
         <main className="page">
-            <h1>Favorites</h1>
-            <p className="result-count">You have {favorites.length} favorite products.</p>
+            <h1>Favorite Products</h1>
 
             <div className="product-grid">
                 {favorites.map(product => (

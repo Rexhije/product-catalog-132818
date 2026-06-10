@@ -17,13 +17,16 @@ function ProductsPage() {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+
     const [search, setSearch] = useState('')
     const [category, setCategory] = useState('all')
+
     const [form, setForm] = useState(emptyForm)
     const [message, setMessage] = useState('')
     const [editingId, setEditingId] = useState(null)
 
     const searchRef = useRef(null)
+
     const { favorites, toggleFavorite, removeFavorite } = useContext(FavoritesContext)
 
     useEffect(() => {
@@ -56,8 +59,7 @@ function ProductsPage() {
                 .toLowerCase()
                 .includes(search.toLowerCase())
 
-            const matchesCategory =
-                category === 'all' || product.category === category
+            const matchesCategory = category === 'all' || product.category === category
 
             return matchesSearch && matchesCategory
         })
@@ -91,7 +93,7 @@ function ProductsPage() {
             return
         }
 
-        if (editingId) {
+        if (editingId !== null) {
             setProducts(prevProducts =>
                 prevProducts.map(product =>
                     product.id === editingId
@@ -144,7 +146,10 @@ function ProductsPage() {
     }, [])
 
     const deleteProduct = useCallback((id) => {
-        setProducts(prevProducts => prevProducts.filter(product => product.id !== id))
+        setProducts(prevProducts =>
+            prevProducts.filter(product => product.id !== id)
+        )
+
         removeFavorite(id)
 
         if (editingId === id) {
@@ -154,7 +159,7 @@ function ProductsPage() {
 
     if (loading) {
         return (
-            <main className="page center-page">
+            <main className="page">
                 <h2>Loading products...</h2>
             </main>
         )
@@ -162,7 +167,7 @@ function ProductsPage() {
 
     if (error) {
         return (
-            <main className="page center-page">
+            <main className="page">
                 <h2>Error: {error}</h2>
             </main>
         )
@@ -185,12 +190,15 @@ function ProductsPage() {
                 <input
                     ref={searchRef}
                     type="text"
-                    placeholder="Search products..."
+                    placeholder="Search products"
                     value={search}
-                    onChange={e => setSearch(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
 
-                <select value={category} onChange={e => setCategory(e.target.value)}>
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                >
                     {categories.map(item => (
                         <option key={item} value={item}>
                             {item}
@@ -199,7 +207,9 @@ function ProductsPage() {
                 </select>
             </div>
 
-            <p className="result-count">Showing {filteredProducts.length} products</p>
+            <p className="result-count">
+                Showing {filteredProducts.length} products
+            </p>
 
             <div className="product-grid">
                 {filteredProducts.map(product => {

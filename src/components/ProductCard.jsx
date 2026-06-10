@@ -4,10 +4,12 @@ function ProductCard({ product, isFavorite, onToggleFavorite, onEdit, onDelete }
     return (
         <div className="product-card">
             <h2>{product.title}</h2>
+
             <p className="category">Category: {product.category}</p>
             <p>Price: ${product.price}</p>
             <p>Rating: {product.rating}</p>
             <p>Stock: {product.stock}</p>
+
             <p className="description">{product.description}</p>
 
             <div className="card-actions">

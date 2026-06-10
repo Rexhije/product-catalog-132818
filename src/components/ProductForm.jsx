@@ -1,52 +1,52 @@
 function ProductForm({ form, message, isEditing, onChange, onSubmit, onCancel }) {
     return (
-        <form onSubmit={onSubmit} className="product-form">
+        <form className="product-form" onSubmit={onSubmit}>
             <h2>{isEditing ? 'Edit Product' : 'Add New Product'}</h2>
 
             <div className="form-grid">
                 <input
-                    name="title"
                     type="text"
+                    name="title"
                     placeholder="Title"
                     value={form.title}
                     onChange={onChange}
                 />
 
                 <input
-                    name="category"
                     type="text"
+                    name="category"
                     placeholder="Category"
                     value={form.category}
                     onChange={onChange}
                 />
 
                 <input
-                    name="price"
                     type="number"
+                    name="price"
                     placeholder="Price"
                     value={form.price}
                     onChange={onChange}
                 />
 
                 <input
-                    name="rating"
                     type="number"
+                    name="rating"
                     placeholder="Rating"
                     value={form.rating}
                     onChange={onChange}
                 />
 
                 <input
-                    name="stock"
                     type="number"
+                    name="stock"
                     placeholder="Stock"
                     value={form.stock}
                     onChange={onChange}
                 />
 
                 <input
-                    name="brand"
                     type="text"
+                    name="brand"
                     placeholder="Brand"
                     value={form.brand}
                     onChange={onChange}
